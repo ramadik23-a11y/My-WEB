@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Premium | Nama Anda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* CSS Variables & Base Setup */
+        :root {
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --text-gray: #94a3b8;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Navbar */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            transition: 0.3s;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .logo span { color: var(--primary); }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--light);
+            font-weight: 500;
+            font-size: 15px;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--primary);
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover::after, nav ul li a.active::after { width: 100%; }
+        nav ul li a:hover { color: var(--primary); }
+
+        /* Global Section Styles */
+        section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: #fff;
+        }
+
+        .section-title span { color: var(--primary); }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 120px;
+        }
+
+        .hero-content { flex: 1; }
+        .hero-content h3 { font-size: 24px; color: var(--text-gray); font-weight: 500; }
+        .hero-content h1 { font-size: 56px; line-height: 1.2; margin: 10px 0; }
+        .hero-content h1 span { color: var(--primary); }
+        .hero-content p { color: var(--text-gray); margin-bottom: 30px; font-size: 16px; max-width: 500px; }
+
+        .typing-text { font-size: 24px; font-weight: 600; color: #38bdf8; margin-bottom: 15px; min-height: 36px;}
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            border: 2px solid var(--primary);
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: var(--primary);
+            box-shadow: 0 0 20px rgba(79, 70, 229, 0.4);
+        }
+
+        .btn-outline { background: transparent; color: #fff; border: 2px solid #fff; margin-left: 15px; }
+        .btn-outline:hover { background: #fff; color: var(--dark); box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); }
+
+        .social-icons { margin-top: 30px; }
+        .social-icons a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            color: #fff;
+            font-size: 18px;
+            margin-right: 15px;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        .social-icons a:hover { background: var(--primary); border-color: var(--primary); transform: translateY(-5px); }
+
+        .hero-img { flex: 1; text-align: right; }
+        .hero-img img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            animation: floatImage 4s ease-in-out infinite;
+            border: 1px solid var(--glass-border);
+        }
+
+        @keyframes floatImage {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* About / Skills Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            background: var(--glass-bg);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+        }
+
+        .about-info h3 { font-size: 24px; margin-bottom: 15px; color: #fff; }
+        .about-info p { color: var(--text-gray); margin-bottom: 20px; }
+        .info-list { list-style: none; }
+        .info-list li { margin-bottom: 10px; color: var(--light); }
+        .info-list li i { color: var(--primary); width: 25px; }
+
+        .skills-box .skill { margin-bottom: 20px; }
+        .skill-name { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 14px; }
+        .skill-bar { width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 5px; overflow: hidden; }
+        .skill-per { height: 100%; background: var(--primary); border-radius: 5px; position: relative; }
+
+        /* Portfolio Section */
+        .filter-buttons { text-align: center; margin-bottom: 40px; }
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--glass-border);
+            color: #fff;
+            padding: 8px 20px;
+            margin: 0 5px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+        .filter-btn.active, .filter-btn:hover { background: var(--primary); border-color: var(--primary); }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+        }
+
+        .portfolio-item img { width: 100%; height: 250px; object-fit: cover; transition: 0.5s; }
+        .portfolio-item:hover img { transform: scale(1.1); filter: brightness(0.5); }
+
+        .portfolio-info {
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(15, 23, 42, 0.9));
+            transition: 0.5s;
+            text-align: center;
+        }
+
+        .portfolio-item:hover .portfolio-info { bottom: 0; }
+        .portfolio-info h4 { font-size: 20px; color: #fff; margin-bottom: 5px; }
+        .portfolio-info p { color: var(--primary); font-size: 14px; margin-bottom: 15px; }
+        .portfolio-info a { color: #fff; font-size:
